@@ -1,0 +1,18 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: certbot
+  namespace: eternilab
+  author: "Eternilab <support@eternilab.com>"
+  description: Configuration du client let's encrpyt certbot
+  min_ansible_version: "2.14"
+  company: "Eternilab"
+  license: "MIT"
+  platforms:
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - pki
+    - certificate
