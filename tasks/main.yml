@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Eternilab <support@eternilab.com>
+#
+# SPDX-License-Identifier: CECILL-2.1
+
+---
+- name: "Handle certbot role"
+  ansible.builtin.import_tasks: certbot.yml
+  tags:
+    - certbot

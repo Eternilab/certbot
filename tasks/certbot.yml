@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2025 Eternilab <support@eternilab.com>
+#
+# SPDX-License-Identifier: CECILL-2.1
+
+---
+- name: "Package for certbot installed (APT based)"
+  ansible.builtin.apt:
+    pkg: "{{ certbot_debian_pkg }}"
+    state: present
+  become: true
+  when: ansible_pkg_mgr == 'apt'
+  tags:
+    - install
+
+# - name: be sure nginx is installed (PKG based)
+#  pkgng:
+#    pkg: "{{ nginx_freebsd_pkg }}"
+#    state: present
+#  become: yes
+#  when: ansible_pkg_mgr == 'pkgng'
+#  tags:
+#    - install
+
+- name: "ACME server address is configured"
+  community.general.ini_file:
+    path: "/etc/letsencrypt/cli.ini"
+    section: null
+    option: server
+    value: "{{ acme_server }}"
+    mode: '0644'
+  become: true
+  when: acme_server is defined
+  tags:
+    - conf
